@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login Page</title>
+         <!-- Cool Google Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+        <!-- Our stylesheet -->
+        <link rel="stylesheet" type="text/css" href="indexpage.css">
+    </head>
+    <body>
+        <div id="content_container">
+            <div id="form_container">
+                <div id="form_header_container">
+                    <h2 id="form_header"> Login </h2>
+                </div>
+
+                <div id="form_content_container">
+                    <div id="form_content_inner_container">
+                        <input type="text" id="full_name" placeholder="Full name">
+                        <input type="email" id="email" placeholder="Email">
+                        <input type="password" id="password" placeholder="New Password">
+                        <input type="text" id="Department name" placeholder="IT/CSE/CIVIL/CHEM">
+                        
+                        <div >
+                            <a href="index.html">Login</a>
+                            <button onclick="register()">Register</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+        
+        <script>
+          const firebaseConfig = {
+            apiKey: "AIzaSyA9oI8k8cJJ8RDkPDdlfluZ_01UTOcDCWU",
+            authDomain: "dep-db.firebaseapp.com",
+            projectId: "dep-db",
+            storageBucket: "dep-db.appspot.com",
+            messagingSenderId: "157432445395",
+            appId: "1:157432445395:web:10591cbe81b673b478d726",
+            measurementId: "G-X4BZ2Z8SX5"
+          };
+          firebase.initializeApp(firebaseConfig);
+          function register() {
+  // Get all our input fields
+          email = document.getElementById('email').value
+          password = document.getElementById('password').value
+          full_name = document.getElementById('full_name').value
+         
+          var user_data = {
+          Email : email,
+          Full_name : full_name,
+          //Department_names : Department_names,
+          //milk_before_cereal : milk_before_cereal,
+          //last_login : Date.now()
+          }
+          firebase.database().ref("users1/").set(user_data)
+      }
+        </script>
+    </body>
+
+</html>
